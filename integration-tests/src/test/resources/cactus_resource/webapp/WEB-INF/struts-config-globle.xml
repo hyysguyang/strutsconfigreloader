@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources/>
+  <form-beans/>
+  <global-exceptions>
+    <!--<exception key="err.exception" type="java.lang.Exception"-->
+    <!--path="/WEB-INF/jsp/error.jsp"/>-->
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="failure" path="/WEB-INF/jsp/error.jsp" redirect="false"/>
+    <forward name="unknown-error" path="/WEB-INF/jsp/error.jsp"/>
+    <forward name="success" path="/WEB-INF/jsp/success.jsp"
+             contextRelative="true"/>
+  </global-forwards>
+  <action-mappings>
+
+  </action-mappings>
+  
+  <!-- 定义校验插件 -->
+  <plug-in id="validate-plugin" className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/test-validator-rules.xml,/WEB-INF/test-validation.xml"/>
+  </plug-in>
+  
+   <!-- 定义Tiles插件 -->
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/test-tiles-defs.xml"/>
+    <!-- Set Module-awareness to true -->
+    <set-property property="moduleAware" value="true" />
+  </plug-in>
+  
+
+</struts-config>
+
